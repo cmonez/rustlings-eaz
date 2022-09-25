@@ -16,7 +16,6 @@ use std::sync::mpsc::{channel, RecvTimeoutError};
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Duration;
-
 #[macro_use]
 mod ui;
 
@@ -24,7 +23,6 @@ mod exercise;
 mod project;
 mod run;
 mod verify;
-
 // In sync with crate version
 const VERSION: &str = "5.2.1";
 
@@ -351,7 +349,7 @@ fn watch(exercises: &[Exercise], verbose: bool) -> notify::Result<WatchStatus> {
     let should_quit = Arc::new(AtomicBool::new(false));
 
     let mut watcher: RecommendedWatcher = Watcher::new(tx, Duration::from_secs(2))?;
-    watcher.watch(Path::new("./exercises"), RecursiveMode::Recursive)?;
+    watcher.watch(Path::new("exercises"), RecursiveMode::Recursive)?;
 
     clear_screen();
 
