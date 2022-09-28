@@ -27,7 +27,7 @@ pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
         Err(ParseIntError) => {
             Err(ParseIntError)
         }
-        Ok(result) => Ok(result * 5 + 1)
+        Ok(result) => Ok(result * cost_per_item + processing_fee)
     };
     qty
 }
